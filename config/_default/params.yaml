@@ -1,0 +1,179 @@
+# SITE SETUP
+# Guide: https://wowchemy.com/docs/getting-started/
+# Documentation: https://wowchemy.com/docs/
+# This file is formatted using YAML syntax - learn more at https://learnxinyminutes.com/docs/yaml/
+
+# Appearance
+
+# Choose from: 1950s, apogee, coffee, cyberpunk, dark, earth, forest, minimal, mr_robot, ocean, rose, strawberry.
+# see https://github.com/wowchemy/wowchemy-hugo-themes/tree/main/wowchemy/data/themes
+theme: 'minimal'
+day_night: true
+# Choose from: classic, cyberpunk, minimal, mr_robot, native, rose
+# see https://github.com/wowchemy/wowchemy-hugo-themes/tree/main/wowchemy/data/fonts
+font: ''
+font_size: L
+
+# SEO
+
+site_type: Person
+local_business_type: ''
+org_name: 'JoseRodrigues443'
+description: 'Personal Blog of Miguel Rodrigues'
+twitter: 'https://twitter.com/JosRodr63795423'
+
+# Contact (edit or remove options as required)
+
+email: Josemiguel443@gmail.com
+phone: +351 910 920 245
+address:
+  street: Matosinhos, Porto, Portugal
+  city: Oporto
+  region: Oporto
+  postcode: '4460-170, Senhora da Hora'
+  country: Portugal
+  country_code: PT
+coordinates:
+  latitude: '41.1853221'
+  longitude: '-8.6513544'
+directions:
+office_hours:
+  - 'Monday - 9:00 to 17:00 UTC (Lisbon/London Time)'
+  - 'Tuesday - 9:00 to 17:00 UTC (Lisbon/London Time)'
+  - 'Wednesday - 9:00 to 17:00 UTC (Lisbon/London Time)'
+  - 'Thursday - 9:00 to 17:00 UTC (Lisbon/London Time)'
+  - 'Friday - 9:00 to 17:00 UTC (Lisbon/London Time)'
+appointment_url: 'https://calendly.com/josemiguel443'
+contact_links:
+  - icon: twitter
+    icon_pack: fab
+    name: DM Me
+    link: 'https://twitter.com/JosRodr63795423'
+  # - icon: skype
+  #   icon_pack: fab
+  #   name: Skype Me
+  #   link: 'skype:echo123?call'
+  # - icon: keybase
+  #   icon_pack: fab
+  #   name: Chat on Keybase
+  #   link: 'https://keybase.io/'
+  # - icon: comments
+  #   icon_pack: fas
+  #   name: Discuss on Forum
+  #   link: 'https://discourse.gohugo.io'
+  - icon: linkedin
+    icon_pack: fab
+    name: DM Me
+    link: 'https://www.linkedin.com/in/jos%C3%A9-rodrigues-165290110/'
+  - icon: github
+    icon_pack: fab
+    name: See my projects
+    link: 'https://github.com/JoseRodrigues443'
+
+# Site header
+
+main_menu:
+  enable: true
+  align: r
+  show_logo: true
+  show_language: false
+  show_day_night: true
+  show_search: true
+  highlight_active_link: true
+
+# Localization
+
+date_format: 'Jan 2, 2006'
+time_format: '3:04 PM'
+address_format: en-us
+
+# Site features
+
+highlight: true
+highlight_languages:
+  - r
+  - python
+  - csharp
+  - cs
+  - js
+  - typescript
+  - solidity
+math: true
+diagram: true
+privacy_pack: true
+edit_page:
+  repo_url: 'https://github.com/JoseRodrigues443/joserodrigues443.github.io'
+  content_dir: ''
+  repo_branch: main
+  editable:
+    page: false
+    post: false
+    book: false
+show_related:
+  book: true
+  page: false
+  post: true
+  project: true
+  publication: true
+  event: true
+reading_time: true
+section_pager: false
+docs_section_pager: true
+sharing: true
+copyright_license:
+  enable: true
+  allow_derivatives: true
+  share_alike: true
+  allow_commercial: false
+  notice: 'This work is licensed under {license}'
+abstract_length: 135
+plugins_js: []
+avatar:
+  gravatar: false
+  shape: circle
+publications:
+  date_format: January 2006
+  citation_style: apa
+projects:
+  post_view: 2
+  publication_view: 2
+  talk_view: 2
+breadcrumb:
+  page_types:
+    book: true
+comments:
+  provider: 'disqus'
+  commentable:
+    post: true
+    book: true
+    project: true
+    publication: true
+    event: true
+  disqus:
+    shortname: 'joserodrigues443-github-io'
+    show_count: true
+  commento:
+    url: ''
+search:
+  provider: wowchemy
+  algolia:
+    app_id: ''
+    api_key: ''
+    index_name: ''
+    show_logo: false
+map:
+  provider: 'mapnik'
+  api_key: 'AIzaSyBu5nZKbeK-WHQ70oqOWo'
+  zoom: 15
+marketing:
+  google_analytics: 'G-WNKRZ2QXRT'
+  google_tag_manager: ''
+  google_site_verification: ''
+  baidu_site_verification: ''
+  baidu_tongji: ''
+cms:
+  branch: master
+  local_backend: false
+icon:
+  pack:
+    ai: true

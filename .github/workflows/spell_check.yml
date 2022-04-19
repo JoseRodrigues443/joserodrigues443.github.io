@@ -1,0 +1,11 @@
+name: Spellcheck CI
+on: [push, pull_request]
+jobs:
+  spell:
+      name: Spellcheck
+      runs-on: ubuntu-latest
+      steps:
+      # The checkout step
+      - uses: actions/checkout@master
+      - uses: rojopolis/spellcheck-github-actions@0.19.0
+        name: Spellcheck
