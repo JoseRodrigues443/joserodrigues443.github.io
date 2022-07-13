@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>blockchain | Miguel Rodrigues</title><link>https://joserodrigues443.github.io/tag/blockchain/</link><atom:link href="https://joserodrigues443.github.io/tag/blockchain/index.xml" rel="self" type="application/rss+xml"/><description>blockchain</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>Copyright © 2022</copyright><lastBuildDate>Tue, 17 Aug 2021 00:00:00 +0000</lastBuildDate><image><url>https://joserodrigues443.github.io/media/icon_hueb4822ce06564afc741e817af2e2aac7_25000_512x512_fill_lanczos_center_3.png</url><title>blockchain</title><link>https://joserodrigues443.github.io/tag/blockchain/</link></image><item><title>Access control on a NFT Solidity Contract</title><link>https://joserodrigues443.github.io/post/nft-with-access-control/</link><pubDate>Tue, 17 Aug 2021 00:00:00 +0000</pubDate><guid>https://joserodrigues443.github.io/post/nft-with-access-control/</guid><description>&lt;h1 id="introduction">Introduction&lt;/h1>
+&lt;ul>
+&lt;li>&lt;a href="#introduction">Introduction&lt;/a>
+&lt;ul>
+&lt;li>&lt;a href="#first-what-is-a-nft">First&amp;hellip; What is a NFT?&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#how-can-i-create-and-use-a-nft">How can I create and use a NFT?&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#why-should-i-secure-it">Why should I secure it?&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#show-me-the-code-man">Show me the code man&lt;/a>
+&lt;ul>
+&lt;li>&lt;a href="#requirements">Requirements&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#create-a-base-project">Create a base project&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#create-the-contracts">Create the contracts&lt;/a>
+&lt;ul>
+&lt;li>&lt;a href="#implement-role-access-system">Implement Role Access System&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#implement-the-nft-contract">Implement the NFT contract&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;a href="#how-do-how-i-know-it-works-testing-to-the-rescue">How do how I know it works? Testing to the rescue&lt;/a>
+&lt;ul>
+&lt;li>&lt;a href="#lets-test">Lets test&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;a href="#concluding">Concluding&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#license">License&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>This post provides the notion on how to create a NFT that can be deployed and used on multiple blockchain networks by multiple people, but at the same time add a security feature that makes sure that only authorized personal can use the complex features of the NFT.&lt;/p>
+&lt;h2 id="first-what-is-a-nft">First&amp;hellip; What is a NFT?&lt;/h2>
+&lt;p>A NFT is a Non-fungible token, so its a representation that something that is unique on the blockchain. They can be owned by someone, and no one can alter that ownership without permission (or a transfer).&lt;/p>
+&lt;p>It can be anything:&lt;/p>
+&lt;ul>
+&lt;li>a image&lt;/li>
+&lt;li>a video&lt;/li>
+&lt;li>a concert ticket&lt;/li>
+&lt;li>any legal document that can be signed&lt;/li>
+&lt;li>a deed for a house&lt;/li>
+&lt;/ul>
+&lt;p>
+&lt;figure >
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="./img/what-id-a-nft.jpg" alt="What is a NFT diagram" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>
+&lt;/p>
+&lt;h2 id="how-can-i-create-and-use-a-nft">How can I create and use a NFT?&lt;/h2>
+&lt;p>To first create and use a NFT we need have a base contract, a contract is the set of rules, data store and implementation of the logic that we want to have in our program.&lt;/p>
+&lt;p>
+&lt;figure >
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="./img/how-to-use-a-nft.jpg" alt="How to use a NFT" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>
+&lt;/p>
+&lt;h2 id="why-should-i-secure-it">Why should I secure it?&lt;/h2>
+&lt;p>It really depends on the objective of your Contract, if you want a Contract that the community can use freely, don&amp;rsquo;t secure it.&lt;/p>
+&lt;p>But imagine that you are a artist, and you have a concert or a gig in the next months. You can sell tickets as unique tokens (NFT&amp;rsquo;s) that after the event are collectible&amp;rsquo;s that can be so so valuable in the future. If the contract is not secure everyone can create your concert NFT, those fakes in the market will decrease how valuable and useful your Tokens are.&lt;/p>
+&lt;p>So how can you secure your NFT&amp;rsquo;s? You can create your own security implementation, for example a whitelist where only the users in that whitelist can access the contract features. In the following image you can see how it would work.&lt;/p>
+&lt;p>
+&lt;figure >
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="./img/whitelist-implementation.jpg" alt="Whitelist implementation" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>
+&lt;/p>
+&lt;p>The advantage of this implementation is its simplicity, for example you create a list of allowed addresses (user addresses in the blockchain) like this: &lt;code>mapping(address =&amp;gt; bool) whitelist;&lt;/code>. Then you check if the sender of the request is in the whitelist, like this &lt;code>require(whitelist[msg.sender]);&lt;/code>, if the message sender is in the required check does not fail and the transaction is possible.&lt;/p>
+&lt;p>But there is a problem with this &amp;ldquo;simple&amp;rdquo; solution&amp;hellip; First everyone has the same access in this whitelist, the artist has the same access as the intern, if we want to have different access level&amp;rsquo;s then a role based system would need to be implemented&lt;/p>
+&lt;h2 id="show-me-the-code-man">Show me the code man&lt;/h2>
+&lt;p>You can see the entire project &lt;a href="https://github.com/JoseRodrigues443/ownable-nft-contract-solidity" target="_blank" rel="noopener">this repository 🔥 JoseRodrigues443/ownable-nft-contract-solidity&lt;/a> 🔥, but we are going to analyse it step by step.&lt;/p>
+&lt;h3 id="requirements">Requirements&lt;/h3>
+&lt;ul>
+&lt;li>NodeJS (setup &lt;a href="https://nodejs.org/en/" target="_blank" rel="noopener">instruction&amp;rsquo;s here&lt;/a>)&lt;/li>
+&lt;li>Hardhat tooling (setup &lt;a href="https://hardhat.org/tutorial/setting-up-the-environment.html" target="_blank" rel="noopener">instruction&amp;rsquo;s here&lt;/a>)&lt;/li>
+&lt;/ul>
+&lt;h3 id="create-a-base-project">Create a base project&lt;/h3>
+&lt;p>There are multiple projects and tools that allow use to compile contracts in solidity, to deploy the contracts and create unit tests that allow us to make sure everything is fine&amp;hellip; Today we are going to use &lt;a href="https://hardhat.org/tutorial/creating-a-new-hardhat-project.html" target="_blank" rel="noopener">HardHat&lt;/a>.&lt;/p>
+&lt;pre>&lt;code class="language-bash">
+# Setup basic npm project
+mkdir project
+cd project
+npm init
+npm install --save-dev hardhat
+# Start project, select the typescript option for a type safe language (we are not savages)
+npx hardhat
+&lt;/code>&lt;/pre>
+&lt;h3 id="create-the-contracts">Create the contracts&lt;/h3>
+&lt;pre>&lt;code class="language-bash">
+# Contract that haves and manages a user and admin Role
+touch contracts/RoleControl.sol
+# the ERC 721 contract that uses the *RoleControl* contract access control logic
+touch contracts/ConcertNFT.sol
+&lt;/code>&lt;/pre>
+&lt;h4 id="implement-role-access-system">Implement Role Access System&lt;/h4>
+&lt;p>We could create our own access control system&amp;hellip; But lets be honest, would that be safe or practical?
+Because of that we are going a fully tested and community supported contract called &lt;a href="https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/AccessControl.sol" target="_blank" rel="noopener">AccessControl.sol&lt;/a> from &lt;a href="https://github.com/OpenZeppelin" target="_blank" rel="noopener">OpenZeppelin&lt;/a>.&lt;/p>
+&lt;p>
+&lt;figure >
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="./img/access-control-implementation.jpg" alt="Access Control implementation" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>
+&lt;/p>
+&lt;p>In solidity we can call the Github solidity file directly, but the link can break in the future, is better to install it locally using &lt;code>npm install @openzeppelin/contracts&lt;/code>.&lt;/p>
+&lt;p>Edit the &lt;em>RoleControl.sol&lt;/em> contract:&lt;/p>
+&lt;pre>&lt;code class="language-javascript">// SPDX-License-Identifier: GPL3 &amp;lt;-- ADD YOUR LICENSE HERE (MIT; GPL3; etc)
+// The version of the Solidity language to use
+pragma solidity ^0.8.0;
+// Import the OpenZeppelin AccessControl contract
+import &amp;quot;@openzeppelin/contracts/access/AccessControl.sol&amp;quot;;
+// create a contract that extends the OpenZeppelin AccessControl contract
+contract RoleControl is AccessControl {
+// We can create as many roles as we want
+// We use keccak256 to create a hash that identifies this constant in the contract
+bytes32 public constant USER_ROLE = keccak256(&amp;quot;USER&amp;quot;); // hash a USER as a role constant
+bytes32 public constant INTERN_ROLE = keccak256(&amp;quot;INTERN&amp;quot;); // hash a INTERN as a role constant
+// Constructor of the RoleControl contract
+constructor (address root) {
+// NOTE: Other DEFAULT_ADMIN's can remove other admins, give this role with great care
+_setupRole(DEFAULT_ADMIN_ROLE, root); // The creator of the contract is the default admin
+// SETUP role Hierarchy:
+// DEFAULT_ADMIN_ROLE &amp;gt; USER_ROLE &amp;gt; INTERN_ROLE &amp;gt; no role
+_setRoleAdmin(USER_ROLE, DEFAULT_ADMIN_ROLE);
+_setRoleAdmin(INTERN_ROLE, USER_ROLE);
+}
+// Create a bool check to see if a account address has the role admin
+function isAdmin(address account) public virtual view returns(bool)
+{
+return hasRole(DEFAULT_ADMIN_ROLE, account);
+}
+// Create a modifier that can be used in other contract to make a pre-check
+// That makes sure that the sender of the transaction (msg.sender) is a admin
+modifier onlyAdmin() {
+require(isAdmin(msg.sender), &amp;quot;Restricted to admins.&amp;quot;);
+_;
+}
+// Add a user address as a admin
+function addAdmin(address account) public virtual onlyAdmin
+{
+grantRole(DEFAULT_ADMIN_ROLE, account);
+}
+&lt;/code>&lt;/pre>
+&lt;p>We just made the checks for the admin, but now you can create a check for all the other roles using the same logic.&lt;/p>
+&lt;p>So how can I use this contract? Very simple, we would extend the RoleControl contract (&lt;code>contract X is RoleControl&lt;/code>). Then we you have a method that you want to protect just add the modifier like this:&lt;/p>
+&lt;pre>&lt;code class="language-javascript">
+// Only a account with admin role can access this
+function createNFT(address receiver, string memory uri) public onlyAdmin returns (uint256)
+{
+&lt;/code>&lt;/pre>
+&lt;h4 id="implement-the-nft-contract">Implement the NFT contract&lt;/h4>
+&lt;p>Now that we have the tools to secure our NFT, lets create it.&lt;/p>
+&lt;p>Edit the &lt;em>ConcertNFT.sol&lt;/em> contract:&lt;/p>
+&lt;pre>&lt;code class="language-javascript">
+// SPDX-License-Identifier: GPL3
+pragma solidity ^0.8.0;
+// implements the ERC721 standard
+import &amp;quot;@openzeppelin/contracts/token/ERC721/ERC721.sol&amp;quot;;
+import &amp;quot;@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol&amp;quot;;
+import &amp;quot;@openzeppelin/contracts/utils/Counters.sol&amp;quot;;
+// Logs are usefull
+import &amp;quot;hardhat/console.sol&amp;quot;;
+// Use the previous contract
+import &amp;quot;./RoleControl.sol&amp;quot;;
+contract ConcertNFT is ERC721, ERC721URIStorage, RoleControl {
+using Counters for Counters.Counter;
+Counters.Counter private _tokenIds;
+// events can be emitted, and used/read in unit tests
+// ideal to know what is happening
+event MintedWithRole(
+address from,
+address to,
+uint256 tokenId,
+string tokenURI,
+bool isAdmin
+);
+constructor() ERC721(&amp;quot;ConcertNFT&amp;quot;, &amp;quot;NFT&amp;quot;) RoleControl(msg.sender) {
+console.log(&amp;quot;Constructor: ConcertNFT created&amp;quot;);
+}
+// Method that a NFT can be minted/Created from this contract
+function createNFT(address receiver, string memory uri) public
+onlyAdmin // only the admin
+returns (uint256)
+{
+_tokenIds.increment();
+uint256 newItemId = _tokenIds.current();
+_mint(receiver, newItemId);
+_setTokenURI(newItemId, uri); // uri is the file URI that can be seen in the market
+emit MintedWithRole(msg.sender, receiver, newItemId, uri, isAdmin(msg.sender));
+// returns the id for the newly created token
+return newItemId;
+}
+&lt;/code>&lt;/pre>
+&lt;p>Now we can use this contract, first we deploy this contract (&lt;a href="https://github.com/JoseRodrigues443/ownable-nft-contract-solidity/blob/main/scripts/deploy_ownable.ts" target="_blank" rel="noopener">deploy example here&lt;/a>) and then we can call the mint method of that contract address (&lt;a href="https://github.com/JoseRodrigues443/ownable-nft-contract-solidity/blob/main/scripts/mint.js" target="_blank" rel="noopener">you can see how to do it here&lt;/a>).&lt;/p>
+&lt;h2 id="how-do-how-i-know-it-works-testing-to-the-rescue">How do how I know it works? Testing to the rescue&lt;/h2>
+&lt;p>One of the difficulties of blockchain implementation is that after deploying a contract its code is on the blockchain for ever&amp;hellip; So if you are going to do it, do it right a patch is not easy.&lt;/p>
+&lt;p>Of course there are solutions to this problem, for example using &lt;a href="https://docs.openzeppelin.com/upgrades-plugins/1.x/proxies" target="_blank" rel="noopener">Proxy Patters&lt;/a> that allow the community to call the new versions.&lt;/p>
+&lt;p>Still the best way to avoid problems are with solid test batteries, that allows the developer to make sure that the contract does what is expected without problematic and dangerous edge cases.&lt;/p>
+&lt;p>What cases we want to test in this case?&lt;/p>
+&lt;p>We want to test all &lt;code>RoleControl.sol&lt;/code> feature like:&lt;/p>
+&lt;ul>
+&lt;li>Add/Remove role
+&lt;ul>
+&lt;li>Does the caller haves permissions to make the call?&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>IsAdmin/IsUser()
+&lt;ul>
+&lt;li>Does it protect methods with success?&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>We can do this tests using the &lt;a href="https://www.chaijs.com/" target="_blank" rel="noopener">Chai.js&lt;/a> library, that integrates greatly with the &lt;a href="https://hardhat.org/tutorial/testing-contracts.html" target="_blank" rel="noopener">HardHat testing plugin.&lt;/a>&lt;/p>
+&lt;h3 id="lets-test">Lets test&lt;/h3>
+&lt;ol>
+&lt;li>Create the test file &lt;code>touch test/roleControl.ts&lt;/code>&lt;/li>
+&lt;li>Setup the test env&lt;/li>
+&lt;/ol>
+&lt;pre>&lt;code class="language-typescript">
+import { SignerWithAddress } from &amp;quot;@nomiclabs/hardhat-ethers/signers&amp;quot;;
+import { expect } from &amp;quot;chai&amp;quot;;
+import { ethers } from &amp;quot;hardhat&amp;quot;;
+describe(&amp;quot;RoleControl&amp;quot;, () =&amp;gt; {
+let deployedContract: any;
+// Simulated accounts
+let owner: SignerWithAddress;
+let addr1: SignerWithAddress;
+let addr2: SignerWithAddress;
+let addr3: SignerWithAddress;
+// Setup the base env
+beforeEach(async function () {
+// Deploy the contract
+const Contract = await ethers.getContractFactory(&amp;quot;RoleControl&amp;quot;);
+[owner, addr1, addr2, addr3] = await ethers.getSigners();
+deployedContract = await Contract.deploy(owner.address);
+await deployedContract.deployed();
+});
+&lt;/code>&lt;/pre>
+&lt;p>Then we can have multiple test cases, for example the owner of the contract should be the admin, because in the constructor we do &lt;code>_setupRole(DEFAULT_ADMIN_ROLE, root);&lt;/code>. To test that case we can do:&lt;/p>
+&lt;pre>&lt;code class="language-typescript">
+it(&amp;quot;Owner should be admin&amp;quot;, async () =&amp;gt; {
+// after deploy the owner should be a admin
+expect(await deployedContract.isAdmin(owner.address)).to.be.equal(true);
+// and not a user
+expect(await deployedContract.isUser(owner.address)).to.be.equal(false);
+});
+// we can also check another user that is not the owner:
+it(&amp;quot;Other user should not be admin&amp;quot;, async () =&amp;gt; {
+// addr1 is a random user that did not interacted with the deployment
+expect(await deployedContract.isAdmin(addr1.address)).to.be.equal(false);
+// he also is not registered as a user role
+expect(await deployedContract.isUser(addr1.address)).to.be.equal(false);
+});
+&lt;/code>&lt;/pre>
+&lt;h2 id="concluding">Concluding&lt;/h2>
+&lt;p>Creating a smart contract allows for powerful interactions, however they can have have dangerous repercussions to an entire project. We this type of strategies we can better protect and control the usage of our dApps.&lt;/p>
+&lt;p>Hope this post helped, feel free to see the final product in my &lt;a href="https://github.com/JoseRodrigues443/ownable-nft-contract-solidity" target="_blank" rel="noopener">Github JoseRodrigues443/ownable-nft-contract&lt;/a> and contact me using my page at &lt;a href="https://joserodrigues443.github.io/#home" target="_blank" rel="noopener">JoseRodrigues443.github.io&lt;/a>&lt;/p>
+&lt;h3 id="did-you-find-this-page-helpful-consider-sharing-it-">Did you find this page helpful? Consider sharing it 🙌&lt;/h3></description></item><item><title>GoChain</title><link>https://joserodrigues443.github.io/project/gochain/</link><pubDate>Sat, 27 Apr 2019 00:00:00 +0000</pubDate><guid>https://joserodrigues443.github.io/project/gochain/</guid><description/></item><item><title>IPFS Blogger implementation</title><link>https://joserodrigues443.github.io/project/blogger-ipfs/</link><pubDate>Sat, 27 Apr 2019 00:00:00 +0000</pubDate><guid>https://joserodrigues443.github.io/project/blogger-ipfs/</guid><description/></item><item><title>BlockedIn</title><link>https://joserodrigues443.github.io/project/blockedin/</link><pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate><guid>https://joserodrigues443.github.io/project/blockedin/</guid><description/></item><item><title>NFT Contract with Access Control</title><link>https://joserodrigues443.github.io/project/ownable-nft-contract/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://joserodrigues443.github.io/project/ownable-nft-contract/</guid><description/></item></channel></rss>
