@@ -7,7 +7,7 @@ superuser: true
 avatar_image: "user-3.jpg"
 
 # Role/position/tagline
-role: Farfetch Senior Research and Development Engineer
+role: Senior Engineer at Axonius R&D cluster
 
 # Organizations/Affiliations to show in About widget
 organizations:
