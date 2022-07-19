@@ -43,7 +43,7 @@ This project aims to show how it's possible to deploy a static website using the
 
 Normally a static website is created using regular HTML or Frameworks like Jekyll, Hugo, Next.js, Gatsaby or even Vuepress. After that a webserver (nginx, or others) would provide that website.
 
-That is problematic because is a centralised system that can fail and isso not public.
+That is problematic because is a centralised system that can fail and is not public.
 
 IPFS comes to the rescue providing a flow that is decentralised and can be maintained by the community forever.
 
