@@ -47,6 +47,7 @@ josemiguel
 Config
 STC
 Gravatar
+Résumé
 Maia
 criticalmanufacturing
 www
