@@ -4,6 +4,7 @@ Rodrigues
 josemiguel443@gmail.com
 JoseRodrigues443
 Api
+devops
 resumés
 GoChain
 mailto
