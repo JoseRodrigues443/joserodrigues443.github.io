@@ -16,6 +16,8 @@ georgecushen
 newtab
 resumé
 staticref
+ccna
+netacad
 YAML's
 CAPTCHA
 SVG

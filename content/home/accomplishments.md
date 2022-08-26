@@ -19,6 +19,12 @@ subtitle:
 #   Refer to https://wowchemy.com/docs/customization/#date-format
 date_format: Jan 2006
 
+image = "ribeira_porto.jpg"  # Name of image in `static/media/`.
+  # image_darken = 0.6  # Darken the image? Range 0-1 where 0 is transparent and 1 is opaque.
+  # image_size = "cover"  #  Options are `cover` (default), `contain`, or `actual` size.
+  # image_position = "center"  # Options include `left`, `center` (default), or `right`.
+image_parallax = true  # Use a fun parallax-like fixed background effect? true/false
+
 # Accomplishments.
 #   Add/remove as many `item` blocks below as you like.
 #   `title`, `organization`, and `date_start` are the required parameters.
@@ -28,7 +34,7 @@ item:
 - certificate_url: https://www.netacad.com/courses/networking/ccna-introduction-networks
   date_end: "2016-09-01"
   date_start: "2016-01-01"
-  description: "Certificatiojn of the Level 1 and 2 of the CISCO networking course."
+  description: "Certification of the Level 1 and 2 of the CISCO networking course."
   organization: CCNA 1, CCNA 2 and CCENT
   organization_url: https://www.netacad.com
   title: Cisco Certified Entry Networking Technician
