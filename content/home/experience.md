@@ -24,6 +24,7 @@ date_format: Jan 2006
 experience:
   - title: Senior Engineer
     company: Axonius
+    company_logo: axonius
     company_url: 'https://www.axonius.com/'
     location: Remote
     date_start: '2022-04-16'
@@ -53,6 +54,7 @@ experience:
     company: Farfetch
     company_url: 'https://www.farfetch.com/'
     location: Oporto
+    company_logo: farfetch
     date_start: '2020-01-01'
     date_end: '2021-01-01'
     description: |2-
