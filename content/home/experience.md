@@ -38,6 +38,7 @@ experience:
     company: Farfetch
     company_url: 'https://www.farfetch.com/'
     location: Oporto
+    company_logo: farfetch
     date_start: '2021-01-01'
     date_end: '2022-04-16'
     description: |2-
