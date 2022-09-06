@@ -74,6 +74,7 @@ experience:
     description: Industry 4.0 - MES Core Product Team
   - title: Engineer
     company: E-Goi - Marketing Automation
+    company_logo: e-goi
     company_url: 'https://www.e-goi.com/'
     location: 'Oporto, Portugal'
     date_start: '2016-01-01'
