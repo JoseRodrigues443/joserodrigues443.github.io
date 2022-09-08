@@ -69,6 +69,7 @@ experience:
     company: Critical Manufacturing
     company_url: 'https://www.criticalmanufacturing.com/'
     location: 'Maia, Portugal'
+    company_logo: critical-manufacturing
     date_start: '2018-02-12'
     date_end: '2019-12-31'
     description: Industry 4.0 - MES Core Product Team
