@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>hugo.io | Miguel Rodrigues</title><link>https://joserodrigues443.github.io/tag/hugo.io/</link><atom:link href="https://joserodrigues443.github.io/tag/hugo.io/index.xml" rel="self" type="application/rss+xml"/><description>hugo.io</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>Copyright © 2022</copyright><lastBuildDate>Wed, 12 Jan 2022 00:00:00 +0000</lastBuildDate><image><url>https://joserodrigues443.github.io/media/icon_hueb4822ce06564afc741e817af2e2aac7_25000_512x512_fill_lanczos_center_3.png</url><title>hugo.io</title><link>https://joserodrigues443.github.io/tag/hugo.io/</link></image><item><title>How to write technical documents in Hugo</title><link>https://joserodrigues443.github.io/post/writing-technical-content/</link><pubDate>Wed, 12 Jan 2022 00:00:00 +0000</pubDate><guid>https://joserodrigues443.github.io/post/writing-technical-content/</guid><description>&lt;p>This page uses Hugo, and &lt;a href="https://wowchemy.com/" target="_blank" rel="noopener">Academic&lt;/a> and is designed to give technical content creators a seamless experience. You can focus on the content and Academic handles the rest.&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>hugo.io | Miguel Rodrigues</title><link>https://joserodrigues443.github.io/tag/hugo.io/</link><atom:link href="https://joserodrigues443.github.io/tag/hugo.io/index.xml" rel="self" type="application/rss+xml"/><description>hugo.io</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>Copyright © 2023</copyright><lastBuildDate>Wed, 12 Jan 2022 00:00:00 +0000</lastBuildDate><image><url>https://joserodrigues443.github.io/media/icon_hueb4822ce06564afc741e817af2e2aac7_25000_512x512_fill_lanczos_center_3.png</url><title>hugo.io</title><link>https://joserodrigues443.github.io/tag/hugo.io/</link></image><item><title>How to write technical documents in Hugo</title><link>https://joserodrigues443.github.io/post/writing-technical-content/</link><pubDate>Wed, 12 Jan 2022 00:00:00 +0000</pubDate><guid>https://joserodrigues443.github.io/post/writing-technical-content/</guid><description>&lt;p>This page uses Hugo, and &lt;a href="https://wowchemy.com/" target="_blank" rel="noopener">Academic&lt;/a> and is designed to give technical content creators a seamless experience. You can focus on the content and Academic handles the rest.&lt;/p>
 &lt;p>&lt;strong>Highlight your code snippets, take notes on math classes, and draw diagrams from textual representation.&lt;/strong>&lt;/p>
 &lt;p>On this page, you&amp;rsquo;ll find some examples of the types of technical content that can be rendered with Academic.&lt;/p>
 &lt;h2 id="examples">Examples&lt;/h2>
@@ -23,7 +23,7 @@ data.head()
 &lt;p>Academic supports the popular &lt;a href="https://plot.ly/" target="_blank" rel="noopener">Plotly&lt;/a> chart format.&lt;/p>
 &lt;p>Save your Plotly JSON in your page folder, for example &lt;code>chart.json&lt;/code>, and then add the &lt;code>{{&amp;lt; chart data=&amp;quot;chart&amp;quot; &amp;gt;}}&lt;/code> shortcode where you would like the chart to appear.&lt;/p>
 &lt;p>Demo:&lt;/p>
-&lt;div id="chart-417685293" class="chart">&lt;/div>
+&lt;div id="chart-128496753" class="chart">&lt;/div>
 &lt;script>
 (function() {
 let a = setInterval( function() {
@@ -32,7 +32,7 @@ return;
 }
 clearInterval( a );
 Plotly.d3.json("./line-chart.json", function(chart) {
-Plotly.plot('chart-417685293', chart.data, chart.layout, {responsive: true});
+Plotly.plot('chart-128496753', chart.data, chart.layout, {responsive: true});
 });
 }, 500 );
 })();
