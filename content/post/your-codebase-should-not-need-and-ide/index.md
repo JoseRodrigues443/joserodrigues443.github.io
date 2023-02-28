@@ -1,7 +1,7 @@
 ---
-title: 'Using a decentralized file system to serve your own blog page'
-subtitle: 'Using IPFS to deploy and serve a blog forever :package:'
-summary: Using IPFS to deploy and serve a blog forever :package:.
+title: 'Your codebase should not depend on an IDE'
+subtitle: 'These will save your team so mutch trouble :package:'
+summary: Your codebase should not depend on an IDE :package:.
 authors:
 - admin
 tags:
