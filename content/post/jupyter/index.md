@@ -20,6 +20,8 @@ image:
   caption: ""
   focal_point: ""
   placement: 3
+featured: true
+draft: true
 ---
 
 ```python

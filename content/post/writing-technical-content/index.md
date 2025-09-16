@@ -15,6 +15,8 @@ categories:
 image:
   placement: 3
   caption: 'Image credit: [**John Moeses Bauan**](https://unsplash.com/photos/OGZtQF8iC0g)'
+featured: true
+draft: true
 ---
 
 This page uses Hugo, and [Academic](https://wowchemy.com/) and is designed to give technical content creators a seamless experience. You can focus on the content and Academic handles the rest.
